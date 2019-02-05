@@ -657,11 +657,12 @@ setMethod("plotSampleData",
         xDF_TM$calls[xDF_TM$calls == 1] <- c("GAIN")
         xDF_TM$calls[xDF_TM$calls == 0] <- c("NEUTRAL")
         xDF_TM$calls[xDF_TM$calls == -1] <- c("LOSS")
-
+        
+        # there's a strange bug here i believe...
         p2 <- ggplot2::ggplot(xDF_TM, aes(variable, groupVar)) +
             geom_raster(aes(fill=calls)) +
             scale_fill_manual(values=c(LOSS=lossColor,
-                NEUTRAL=neutralColor, GAIN=gainColor),
+                NEUTRAL=neutralColor, GAIN=gainColor, "#CC79A7"),
                 na.value=missingColor)
     }else{
 
